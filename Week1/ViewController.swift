@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         index += 1
         if index == messages.count {
             index = 0
+//            comment to repush
 //        if messageLabel.text == messages[0] {
 //            messageLabel.text = messages[1]
 //            messageLabel.textColor = UIColor.red
