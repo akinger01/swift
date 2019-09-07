@@ -25,22 +25,13 @@ class ViewController: UIViewController {
                         "Hey, fabulous!",
                         "You are tremendous!"]
         
-        messageLabel.text = messages[index]
-        index += 1
-        if index == messages.count {
-            index = 0
-//            comment to repush test again
-            
-//        if messageLabel.text == messages[0] {
-//            messageLabel.text = messages[1]
-//            messageLabel.textColor = UIColor.red
-//        } else if messageLabel.text == messages[1] {
-//            messageLabel.text = messages[2]
-//            messageLabel.textColor = UIColor.blue
-//        } else {
-//            messageLabel.text = messages[0]
-//            messageLabel.textColor = UIColor.green
-        }
+        messageLabel.text = messages.randomElement()!
+        
+//        messageLabel.text = messages[index]
+//        index += 1
+//        if index == messages.count {
+//            index = 0
+//        }
     }
 }
  
