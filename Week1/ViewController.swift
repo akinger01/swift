@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var awesomeImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
-    var index = 0
+    var awesomePlayer = AVAudioPlayer()
+    var index = -1
+    var imageIndex = -1
+    let numberOfImages = 2
+    let numberOfSongs = 3
+    var songIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +33,6 @@ class ViewController: UIViewController {
                         "Hey, fabulous!",
                         "You are tremendous!"]
         
-//        var newIndex = -1
         var newIndex: Int
         
         repeat{
@@ -35,15 +42,34 @@ class ViewController: UIViewController {
         index = newIndex
         messageLabel.text = messages[index]
         
+        repeat{
+            newIndex = Int.random(in: 0..<numberOfImages )
+        } while newIndex == imageIndex
         
+        var imageCodes = [5490, 3603]
+        imageIndex = newIndex 
+        awesomeImageView.image = UIImage(named: "IMG_\(imageCodes[imageIndex])")
         
-//        messageLabel.text = messages.randomElement()!
+        //play sound
+        repeat{
+            newIndex = Int.random(in: 0..<numberOfSongs )
+        } while songIndex == newIndex
         
-//        messageLabel.text = messages[index]
-//        index += 1
-//        if index == messages.count {
-//            index = 0
-//        }
+        songIndex = newIndex
+        
+        var soundName = "sound\(songIndex)"
+        if let sound = NSDataAsset(name: soundName){
+            //check if sound.data is a sound file
+            do{
+                try awesomePlayer = AVAudioPlayer(data: sound.data)
+                    awesomePlayer.play()
+            } catch {
+                    print("ERROR: data in \(soundName) could not be played as a sound")
+                }
+        } else {
+            print("ERROR: file \(soundName) didn't laod.")
+        }
+        
     }
 }
  
