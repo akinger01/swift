@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         awesomeImageView.image = UIImage(named: "IMG_\(imageCodes[imageIndex])")
          
 
-       
+       //comment for commit
         //Play Sound
         if soundSwitch.isOn{
             songIndex = nonRepeatingRandom(lastNumber: songIndex, maxValue: numberOfSongs)
